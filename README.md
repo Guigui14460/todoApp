@@ -4,7 +4,6 @@ Projet universitaire proposé dans la matière "Développement d'applications mo
 
 ## Table des matières
 
-- [Todo App](#todo-app)
   - [Table des matières](#table-des-matières)
   - [Introduction](#introduction)
   - [Setup](#setup)
