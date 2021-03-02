@@ -4,12 +4,11 @@ Projet universitaire proposé dans la matière "Développement d'applications mo
 
 ## Table des matières
 
-- [Todo App](#todo-app)
-  - [Table des matières](#table-des-matières)
-  - [Introduction](#introduction)
-  - [Setup](#setup)
-  - [Commandes](#commandes)
-  - [Auteurs du projet](#auteurs-du-projet)
+- [Table des matières](#table-des-matières)
+- [Introduction](#introduction)
+- [Setup](#setup)
+- [Commandes](#commandes)
+- [Auteurs du projet](#auteurs-du-projet)
 
 ## Introduction
 Le but du projet est de réaliser une application web/mobile type "Todo list" en utilisant le framework `VueJS` et une API externe afin de sauvegarder les données sur une base de données.
