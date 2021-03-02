@@ -4,18 +4,31 @@ Projet universitaire proposé dans la matière "Développement d'applications mo
 
 ## Table des matières
 
-- [Table des matières](#table-des-matières)
-- [Introduction](#introduction)
-- [Setup](#setup)
-- [Commandes](#commandes)
-- [Auteurs du projet](#auteurs-du-projet)
+- [Todo App](#todo-app)
+  - [Table des matières](#table-des-matières)
+  - [Introduction](#introduction)
+  - [Setup](#setup)
+  - [Commandes](#commandes)
+  - [Auteurs du projet](#auteurs-du-projet)
 
 ## Introduction
 Le but du projet est de réaliser une application web/mobile type "Todo list" en utilisant le framework `VueJS` et une API externe afin de sauvegarder les données sur une base de données.
 
 ## Setup
+Lancez la commande :
+```shell
+$ npm install
+```
 
 ## Commandes
+- Pour lancer le serveur de developpement :
+```shell
+$ npm run serve
+```
+- Pour servir le projet en production :
+```shell
+$ npm run build
+```
 
 ## Auteurs du projet
 - [BOCAGE Arthur](https://github.com/TurluTwoD)
