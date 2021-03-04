@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="check">
     <input type="checkbox" name="premier" id="premier" />
     <label for="premier">premier</label>
     <input type="checkbox" name="de" id="de" />
@@ -9,8 +9,11 @@
 
 
 <script>
+
 export default {
-  name: "todoList",
+  name: "todolist",
+
+  data(){
   data(){
       return{
           
