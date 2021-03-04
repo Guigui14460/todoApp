@@ -1,16 +1,25 @@
 <template>
-  <h1>Home view component</h1>
+  <h1>todolist</h1>
+  <Sidebar></Sidebar>
+  <todolist></todolist>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import todolist  from "../components/todolist"
+import  Sidebar  from "../components/sidebar"
 
 export default defineComponent({
     name: 'Home',
-    components: {},
+    components: {
+      todolist,
+      Sidebar
+    },
 });
 </script>
 
 <style scoped>
+
+
 
 </style>
