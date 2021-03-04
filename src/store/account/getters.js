@@ -1,12 +1,18 @@
-import axios from "axios";
-import endpointCalculator from "../../api";
+import axios, { authTokenConfig } from '../../api';
 
-export const getUser = (state) => {
-    return axios.get(endpointCalculator("/api/user"), state.token).then(response => {
-        // TODO
-        console.log(response);
-    }).catch(function(error){
-        console.error(error);
-        return null;
-    });
+export const getToken = (state) => {
+    return state.token;
+}
+
+export const isLoggedIn = (state) => {
+    return state.token != null;
+}
+
+export const getUserData = (state) => state.info;
+
+export const getUser = (state) => (callback) => {
+    return axios.get("/api/user", authTokenConfig()).then((response) => {
+        state.info = response.data;
+        callback(response.data);
+    }).catch(console.error);
 }

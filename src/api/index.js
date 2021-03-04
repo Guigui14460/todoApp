@@ -1,8 +1,22 @@
+import axios from 'axios';
+
 const API_SERVER_IP = "138.68.74.39";
-const PROTOCOL = "http";
+axios.defaults.baseURL = `http://${API_SERVER_IP}`;
 
-const api_root_endpoint = `${PROTOCOL}://${API_SERVER_IP}`;
-
-export default function endpointCalculator(endpoint){
-    return api_root_endpoint + endpoint;
+export const authTokenConfig = () => {
+    const token = getToken();
+    if(token == null || token === ""){
+        return {};
+    }
+    return {'headers': {'Authorization': `Bearer ${token}`}};
 }
+
+export const getToken = () => {
+    return sessionStorage.getItem('token');
+}
+
+export const setToken = (token) => {
+    sessionStorage.setItem('token', token);
+}
+
+export default axios;
