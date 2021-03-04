@@ -1,5 +1,5 @@
 <template>
-  <h1>Home view component</h1>
+  <h1>Todo list</h1>
 </template>
 
 <script>
@@ -12,5 +12,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+
 
 </style>
