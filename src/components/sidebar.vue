@@ -1,10 +1,7 @@
 <template>
-<div>
-    <input type="checkbox" name="premier" id="premier">
-    <label for="premier">
-     <input type="checkbox" name="de" id="de">
-    <label for="de">
-    <div>
+    <nav>
+        
+    </nav>
 </template>
 
 
