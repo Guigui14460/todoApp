@@ -1,16 +1,16 @@
-import { setToken } from "../../api";
-
-export function load(state, data){
+export function setToken(state, data){
+    localStorage.setItem("token", data.token);
     state.token = data.token;
-    setToken(data.token);
 }
 
-export function saveUserInfo(state, data) {
-    state.info = data;
+export function setAccountData(state, data) {
+    state.accountData.name = data.name;
+    state.accountData.email = data.email;
 }
 
 export function logout(state){
-    setToken("");
+    localStorage.removeItem("token");
     state.token = null;
-    state.info = {};
+    state.accountData.name = "";
+    state.accountData.email = "";
 }

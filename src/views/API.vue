@@ -1,38 +1,41 @@
 <template>
   <h1>API view</h1>
   <button v-on:click="login({'email': 'toto@toto.com', 'password': 'totototo'})">Login</button>
-  <div>{{ getToken }}</div>
-  <button v-on:click="getInfo()">Get info</button>
-  <div>{{ info }}</div>
+  <div>{{ isLoggedIn }}</div>
+  <div style="overflow-wrap: anywhere;">{{ getToken }}</div>
+  <!-- <button v-on:click="getAccountData()">Get info</button> -->
+  <!-- <div>{{ getUserData }}</div> -->
+  <!-- <button v-on:click="logout()">Logout</button> -->
   <button v-on:click="getTodolists()">Get todolists</button>
   <div>{{ getTodolistsData }}</div>
-  <button v-on:click="logout()">Logout</button>
+  <div v-for="todolist in getTodolistsData" :key="todolist.id">
+      <h2>{{ todolist.name }}</h2>
+      <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" />
+  </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import { mapActions, mapGetters } from 'vuex';
+import Todo from '../components/Todo.vue';
 
-export default defineComponent({
+export default {
     name: 'API',
+    components: {
+        Todo,
+    },
     methods: {
-        ...mapActions("account", ["login", "logout"]),
+        ...mapActions("account", ["login", "logout", "getAccountData"]),
         ...mapActions("todolist", ["getTodolists"]),
-        getInfo(){
-            this.info = "";
-            this.getUser(res => this.info = res);
-        },
     },
     data(){
         return {
-            info: "",
         };
     },
     computed: {
-        ...mapGetters("account", ['getUser', 'getToken', 'isLoggedIn', 'getUserData']),
+        ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
         ...mapGetters("todolist", ['getTodolistsData']),
     },
-});
+};
 </script>
 
 <style scoped>

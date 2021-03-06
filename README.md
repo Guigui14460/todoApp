@@ -1,36 +1,42 @@
 # Todo App
 
-Projet universitaire proposé dans la matière "Développement d'applications mobiles hybrides" en L3 Informatique à l'Université de Caen Normandie afin de nous faire utiliser les outils vus en cours et nous faire utiliser une API externe à notre application.
+University project proposed in the subject "Development of hybrid mobile applications" in 3rd year of Computer Science degree at the University of Caen Normandy in order to make us use the tools seen in class and make us use an API external to our application.
 
-## Table des matières
+## Table of contents
 
-  - [Table des matières](#table-des-matières)
+  - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Setup](#setup)
-  - [Commandes](#commandes)
-  - [Auteurs du projet](#auteurs-du-projet)
+  - [Commands](#commands)
+  - [Authors](#authors)
+  - [License](#license)
 
 ## Introduction
-Le but du projet est de réaliser une application web/mobile type "Todo list" en utilisant le framework `VueJS` et une API externe afin de sauvegarder les données sur une base de données.
+The goal of the project is to build a web/mobile application like "Todo list" using the `VueJS` framework and an external API in order to save the data on a database.
 
 ## Setup
-Lancez la commande :
+You need to have NodeJS installed on your machine to be able to use this project.
+
+Launch this command :
 ```shell
 $ npm install
 ```
 
-## Commandes
-- Pour lancer le serveur de developpement :
+## Commands
+- To launch development server :
 ```shell
 $ npm run serve
 ```
-- Pour servir le projet en production :
+- To build the project for production :
 ```shell
 $ npm run build
 ```
 
-## Auteurs du projet
+## Authors
 - [BOCAGE Arthur](https://github.com/TurluTwoD)
 - [PIERRE Corentin](https://github.com/coco-ia)
 - [PIGNARD Alexandre](https://github.com/Myrani)
 - [LETELLIER Guillaume](https://github.com/Guigui14460)
+
+## License
+Project under the MIT license.

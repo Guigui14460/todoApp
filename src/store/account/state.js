@@ -1,6 +1,9 @@
 export default function () {
     return {
         token: null,
-        info: {},
+        accountData: {
+            name: '',
+            email: '',
+        },
     }
 }

@@ -1,0 +1,5 @@
+- Terminer le système avec l'API
+- Faire page de login/register
+- Faire page d'accueil
+- Faire le CSS "mobile first"
+- Améliorer le CSS

@@ -11,14 +11,17 @@
 <script>
 
 export default {
-  name: "todolist",
-
-  data(){
-  data(){
+  name: "TodoList",
+  data() {
       return{
           
-      }
+      };
   }
 };
 </script>
 
+<style scoped>
+#check {
+  padding: 10%;
+}
+</style>

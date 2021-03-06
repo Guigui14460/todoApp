@@ -1,25 +1,19 @@
 <template>
-  <h1>todolist</h1>
-  <Sidebar></Sidebar>
-  <todolist></todolist>
+  <h1>Todolist</h1>
+  <todo-list />
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import todolist  from "../components/todolist"
-import  Sidebar  from "../components/sidebar"
+import TodoList from "@/components/TodoList"
 
-export default defineComponent({
+export default {
     name: 'Home',
     components: {
-      todolist,
-      Sidebar
+      TodoList,
     },
-});
+};
 </script>
 
 <style scoped>
-
-
 
 </style>

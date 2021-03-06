@@ -1,13 +1,16 @@
 <template>
-<article>
+<div>
    <p>Ceci est un test</p>
-</article>
+</div>
 </template>
 
 
 <script>
 export default {
-  name: "Sidebaritem",
-  
+  name: "SidebarItem",
 };
 </script>
+
+<style scoped>
+
+</style>
