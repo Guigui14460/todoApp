@@ -1,6 +1,6 @@
 <template>
 <body>
-  <h1>A propos</h1>
+  <h1>A propos de ce projet</h1>
   <h2>Liste de membres du groupe</h2>
     <div>
         <ul>
@@ -40,7 +40,7 @@ export default {
     background-color: rgb(44, 44, 44);
   }
   h1 {
-    margin-left: 1%;
+    margin-left: 2%;
     font-family: Arial, sans serif;
   }
   h2 {
@@ -54,6 +54,7 @@ export default {
 
   li {
     font-family: Arial, sans serif;
+    margin-left: 1%;
   }
 
 </style>
