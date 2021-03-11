@@ -1,15 +1,15 @@
 <template>
     <nav>
-        <router-link :to="{name: 'home'}">
+        <router-link :to="{name: 'home'}" @click.passive="closeMobileNav()">
             <img src="../assets/logo.png" alt="Logo" id="logo" />
         </router-link>
         <ul class="nav-links">
             <li class="nav-link">
-                <router-link @click.passive="toggleMobileNav()" :to="{name: 'about'}">A propos</router-link>
+                <router-link @click.passive="closeMobileNav()" :to="{name: 'about'}">A propos</router-link>
             </li>
             <li class="nav-link">
-                <a v-if="isLoggedIn" @click.passive="toggleMobileNav()" href="" @click="logout()">Déconnexion</a>
-                <router-link @click.passive="toggleMobileNav()" :to="{name: 'login'}" v-else>Connexion</router-link>
+                <a v-if="isLoggedIn" @click.passive="closeMobileNav()" href="" @click="logout()">Déconnexion</a>
+                <router-link @click.passive="closeMobileNav()" :to="{name: 'login'}" v-else>Connexion</router-link>
             </li>
         </ul>
         <div v-on:click="toggleMobileNav()" id="burger">
@@ -31,6 +31,12 @@ export default {
             if(document.body.clientWidth <= 768){
                 document.getElementById('burger').classList.toggle('toggle');
                 document.querySelector('.nav-links').classList.toggle('nav-active');
+            }
+        },
+        closeMobileNav() {
+            if(document.getElementById('burger').classList.contains("toggle")){
+                document.getElementById('burger').classList.remove("toggle");
+                document.querySelector('.nav-links').classList.remove('nav-active');
             }
         },
     },

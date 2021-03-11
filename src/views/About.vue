@@ -35,26 +35,27 @@ export default {
 </script>
 
 <style scoped>
-  
-  body {
-    background-color: rgb(44, 44, 44);
-  }
-  h1 {
-    margin-left: 2%;
-    font-family: Arial, sans serif;
-  }
-  h2 {
-    margin-left: 1%;
-    font-family: Arial, sans serif;
-  }
-  p {
-    margin-left: 1%;
-    font-family: Arial, sans serif;
-  }
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  li {
-    font-family: Arial, sans serif;
-    margin-left: 1%;
-  }
+h1 {
+  margin-left: 2%;
+}
 
+h2 {
+  margin-left: 1%;
+}
+
+body {
+  background-color: rgb(44, 44, 44);
+}
+
+p {
+  margin-left: 1%;
+}
+
+li {
+  margin-left: 1%;
+}
 </style>

@@ -16,6 +16,7 @@
       <br>
       <button type="submit">Se connecter</button>
   </form>
+  <p>Déjà un compte ? <router-link :to="{name: 'login'}">Connectes-toi ici !</router-link></p>
 </template>
 
 <script>

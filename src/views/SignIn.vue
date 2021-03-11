@@ -47,38 +47,42 @@ export default {
 </script>
 
 <style scoped>
-    form {
-        margin-left: 1%;
-        margin-top: 1%;
-        font-family: Arial, sans serif;
-    }
-    h1 {
-        margin-left: 1%;
-        font-family: Arial, sans serif;
-    }
-    p {
-        margin-left: 1%;
-        margin-top: 1%;
-        font-family: Arial, sans serif;
-    }
-    button {
-        margin-top: 1%;
-        font-family: Arial, sans serif;
-        background-color: #838383;
-        border: none;
-    }
-    input {
-        background-color: #838383;
-        border: none;
-    }
-    br {
-        margin-top: 1%;
-    }
-    a {
-        color: white;
-    }
-    a :hover {
-        color: #838383
-    }
+h1 {
+  margin-left: 1%;
+  font-family: Arial, sans serif;
+}
+
+p {
+  margin-left: 1%;
+  margin-top: 1%;
+  font-family: Arial, sans serif;
+}
+
+form {
+  margin-left: 1%;
+  margin-top: 1%;
+  font-family: Arial, sans serif;
+}
+button {
+  margin-top: 1%;
+  font-family: Arial, sans serif;
+  background-color: #838383;
+  border: none;
+}
+input {
+  background-color: #838383;
+  border: none;
+}
+
+br {
+  margin-top: 1%;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: #838383
+}
 
 </style>
