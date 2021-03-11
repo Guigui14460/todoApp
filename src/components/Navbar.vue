@@ -1,0 +1,131 @@
+<template>
+    <nav>
+        <router-link :to="{name: 'home'}">
+            <img src="../assets/logo.png" alt="Logo" id="logo" />
+        </router-link>
+        <ul class="nav-links">
+            <li class="nav-link">
+                <router-link @click.passive="toggleMobileNav()" :to="{name: 'about'}">A propos</router-link>
+            </li>
+            <li class="nav-link">
+                <a v-if="isLoggedIn" @click.passive="toggleMobileNav()" href="" @click="logout()">Déconnexion</a>
+                <router-link @click.passive="toggleMobileNav()" :to="{name: 'login'}" v-else>Connexion</router-link>
+            </li>
+        </ul>
+        <div v-on:click="toggleMobileNav()" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+</template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex'
+
+export default {
+    name: 'Navbar',
+    methods: {
+        ...mapActions("account", ["getAccountData", "logout"]),
+        toggleMobileNav() {
+            if(document.body.clientWidth <= 768){
+                document.getElementById('burger').classList.toggle('toggle');
+                document.querySelector('.nav-links').classList.toggle('nav-active');
+            }
+        },
+    },
+    computed: {
+        ...mapGetters("account", ['isLoggedIn']),
+    },
+}
+</script>
+
+<style scoped>
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c53737;
+    height: 55px;
+    padding: 0 20px;
+}
+
+#logo {
+    width: 30px;
+    height: 30px;
+    margin-right: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #fefefe;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+}
+.nav-link:not(:last-child) {
+    margin-right: 10px;
+}
+
+#burger {
+    display: none;
+    cursor: pointer;
+}
+#burger div {
+    width: 30px;
+    height: 3px;
+    margin: 8px;
+    background-color: #fefefe;
+    transition: all 0.3s ease-in;
+}
+
+.nav-active {
+    transform: translateX(0) !important;
+}
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-9px, 10px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        top: 39px;
+        left: 0;
+        padding: 20px 0;
+        align-items: center;
+        background-color: #c53737;
+        transform: translateY(-150%);
+        transition: transform 0.35s ease-in-out;
+    }
+    .nav-link:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .nav-link a {
+        width: 100%;
+    }
+  
+    #burger {
+        display: block;
+    }
+}
+</style>

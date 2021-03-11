@@ -25,7 +25,7 @@ export default {
 #root {
   display: grid;
   grid-template-columns: 250px 1fr;
-  min-height: 100vh;
+  min-height: calc(100vh - 55px);
 
   /* margin-top: 20%; */
   /* grid-template-columns: 20% 80%; */
