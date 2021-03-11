@@ -1,5 +1,6 @@
 <template>
-  <h1>A propos</h1>
+<body>
+  <h1>A propos de ce projet</h1>
   <h2>Liste de membres du groupe</h2>
     <div>
         <ul>
@@ -23,7 +24,7 @@
             <li>Afficher le nombre de todos non faites</li>
         </ul>
     </div> 
-    
+  </body>
 </template>
 
 <script>
@@ -34,5 +35,26 @@ export default {
 </script>
 
 <style scoped>
+  
+  body {
+    background-color: rgb(44, 44, 44);
+  }
+  h1 {
+    margin-left: 2%;
+    font-family: Arial, sans serif;
+  }
+  h2 {
+    margin-left: 1%;
+    font-family: Arial, sans serif;
+  }
+  p {
+    margin-left: 1%;
+    font-family: Arial, sans serif;
+  }
+
+  li {
+    font-family: Arial, sans serif;
+    margin-left: 1%;
+  }
 
 </style>
