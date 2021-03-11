@@ -9,8 +9,8 @@
   <button v-on:click="getTodolists()">Get todolists</button>
   <div>{{ getTodolistsData }}</div>
   <div v-for="todolist in getTodolistsData" :key="todolist.id">
-      <h2>{{ todolist.name }}</h2>
-      <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" />
+    <h2>{{ todolist.name }}</h2>
+    <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
@@ -19,22 +19,21 @@ import { mapActions, mapGetters } from 'vuex';
 import Todo from '../components/Todo.vue';
 
 export default {
-    name: 'API',
-    components: {
-        Todo,
-    },
-    methods: {
-        ...mapActions("account", ["login", "logout", "getAccountData"]),
-        ...mapActions("todolist", ["getTodolists"]),
-    },
-    data(){
-        return {
-        };
-    },
-    computed: {
-        ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
-        ...mapGetters("todolist", ['getTodolistsData']),
-    },
+  name: 'API',
+  components: {
+    Todo,
+  },
+  methods: {
+    ...mapActions("account", ["login", "logout", "getAccountData"]),
+    ...mapActions("todolist", ["getTodolists"]),
+  },
+  data(){
+    return {};
+  },
+  computed: {
+    ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
+    ...mapGetters("todolist", ['getTodolistsData']),
+  },
 };
 </script>
 

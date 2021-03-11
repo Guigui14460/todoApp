@@ -13,11 +13,11 @@ import Sidebar from "@/components/Sidebar"
 import TodoList from "@/components/TodoList"
 
 export default {
-    name: 'Home',
-    components: {
-      TodoList,
-      Sidebar,
-    },
+  name: 'Home',
+  components: {
+    TodoList,
+    Sidebar,
+  },
 };
 </script>
 
@@ -26,9 +26,5 @@ export default {
   display: grid;
   grid-template-columns: 250px 1fr;
   min-height: calc(100vh - 55px);
-
-  /* margin-top: 20%; */
-  /* grid-template-columns: 20% 80%; */
-  /* grid-template-rows: 10% 90%; */
 }
 </style>

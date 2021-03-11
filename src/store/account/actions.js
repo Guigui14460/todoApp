@@ -63,4 +63,5 @@ export function register({ commit }, data){
 
 export function logout({ commit }){
     commit('logout');
+    router.push("/");
 }
