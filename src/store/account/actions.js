@@ -20,7 +20,7 @@ export function login({ commit }, data){
             returnInformations["message"] = "Adresse email ou mot de passe incorrect";
             return returnInformations;
         }
-        returnInformations["message"] = "Problème avec le serveur. Veuillez réessayer ultérieurement";
+        returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
         return returnInformations;
     });
 }
@@ -35,12 +35,12 @@ export function getAccountData({ commit }){
     }).catch(console.error);
 }
 
-export function signup({ commit }, data){
+export function register({ commit }, data){
     const name = data.name;
     const email = data.email;
     const password = data.password;
     let returnInformations = {"status": 0, "message": ""};
-    axios.post("register", {name, email, password}).then(response => {
+    return axios.post("register", {name, email, password}).then(response => {
         returnInformations["status"] = response.status;
         if(response.status == 200){
             commit('setToken', response.data);
@@ -56,7 +56,7 @@ export function signup({ commit }, data){
             returnInformations["message"] = "Adresse email déjà utilisée";
             return returnInformations;
         }
-        returnInformations["message"] = "Problème avec le serveur. Veuillez réessayer ultérieurement";
+        returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
         return returnInformations;
     });
 }

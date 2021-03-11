@@ -1,6 +1,6 @@
 <template>
   <h1>Inscrivez-vous</h1>
-  <form @submit.prevent="signupHandler()">
+  <form @submit.prevent="registerHandler()">
       <div v-if="message !== ''" style="color: red;">{{ message }}</div>
       <label for="name">Nom d'utilisateur : </label>
       <input type="text" name="name" id="name" v-model="name" required />
@@ -33,10 +33,10 @@ export default {
         };
     },
     methods: {
-        ...mapActions("account", ["signup"]),
-        signupHandler() {
+        ...mapActions("account", ["register"]),
+        registerHandler() {
             if(this.password === this.confirmPassword){
-                this.signup({'name': this.name, 'email': this.email, 'password': this.password}).then(response => {
+                this.register({'name': this.name, 'email': this.email, 'password': this.password}).then(response => {
                     if(response.status != 200){
                         this.message = response.message;
                     }
