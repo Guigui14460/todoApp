@@ -4,18 +4,32 @@ import Home from '@/views/Home.vue';
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: Home,
     },
     {
         path: '/about',
-        name: 'About',
+        name: 'about',
         component: () => (import('../views/About.vue')),
     },
     {
+        path: '/signin',
+        name: 'login',
+        component: () => (import('../views/SignIn.vue')),
+    },
+    {
+        path: '/signup',
+        name: 'register',
+        component: () => (import('../views/SignUp.vue')),
+    },
+    {
         path: '/api',
-        name: 'API',
+        name: 'api',
         component: () => (import('../views/API.vue')),
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: "/",
     },
 ];
 

@@ -1,0 +1,62 @@
+<template>
+  <h1>Inscrivez-vous</h1>
+  <form @submit.prevent="signupHandler()">
+      <div v-if="message !== ''" style="color: red;">{{ message }}</div>
+      <label for="name">Nom d'utilisateur : </label>
+      <input type="text" name="name" id="name" v-model="name" required />
+      <br>
+      <label for="email">Adresse email : </label>
+      <input type="email" name="email" id="email" v-model="email" required />
+      <br>
+      <label for="password">Mot de passe : </label>
+      <input type="password" name="password" id="password" v-model="password" required />
+      <br>
+      <label for="confirmPassword">Confirmation du mot de passe : </label>
+      <input type="password" name="confirmPassword" id="confirmPassword" v-model="confirmPassword" required />
+      <br>
+      <button type="submit">Se connecter</button>
+  </form>
+</template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+    name: "SignIn",
+    data() {
+        return {
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            message: "",
+        };
+    },
+    methods: {
+        ...mapActions("account", ["signup"]),
+        signupHandler() {
+            if(this.password === this.confirmPassword){
+                this.signup({'name': this.name, 'email': this.email, 'password': this.password}).then(response => {
+                    if(response.status != 200){
+                        this.message = response.message;
+                    }
+                });
+            } else {
+                this.message = "Les deux mots de passe sont différents";
+            }
+        },
+    },
+    computed: {
+        ...mapGetters("account", ["isLoggedIn"]),
+    },
+    mounted() {
+        if(this.isLoggedIn) {
+            this.$router.replace("/");
+        }
+    },
+}
+</script>
+
+<style scoped>
+
+</style>
