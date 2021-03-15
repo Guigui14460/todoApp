@@ -10,6 +10,12 @@ import { mapActions } from 'vuex'
 export default {
     name: "Todo",
     methods: {
+
+        show:function(){
+            console.log(this.todo);
+        },
+
+
         ...mapActions("todolist", ["toggleCompleteTodo", "modifyTodo"]),
     },
     watch: {
@@ -30,6 +36,8 @@ export default {
     },
     props: {
         todo: {type: Object},
+    },mounted(){
+        // this.show()
     }
 }
 </script>

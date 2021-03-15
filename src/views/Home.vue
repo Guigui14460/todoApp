@@ -19,7 +19,7 @@ export default {
     TodoList,
     Sidebar,
   },
-  created(){
+  mounted(){
     this.getTodolists();
   },
   data(){
