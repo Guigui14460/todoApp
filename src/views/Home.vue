@@ -1,5 +1,4 @@
 <template>
-  {{ getTodolists() }}
   <div id="root">
     <sidebar :allTodoList="getTodolistsData" :method="setList"/>
     <main>
@@ -19,6 +18,9 @@ export default {
   components: {
     TodoList,
     Sidebar,
+  },
+  created(){
+    this.getTodolists();
   },
   data(){
     return{
