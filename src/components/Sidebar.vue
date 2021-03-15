@@ -1,12 +1,7 @@
 <template>
   <div>
-  
-    
     <sidebar-item v-for="todolist in allTodoList" :key="todolist.id" :item="todolist" v-on:click="show(todolist)"/>
-   
   </div>
-
-
 </template>
 
 
@@ -20,28 +15,23 @@ export default {
     SidebarItem,
   },
   methods: {
-
-    show:function(todolist){
-      this.method(todolist)
-     
-    },
-
-
     ...mapActions("account", ["login", "logout", "getAccountData"]),
     ...mapActions("todolist", ["getTodolists"]),
   },
   data(){
-    return{
-      list:null
-    }
+    return {
+      list: null,
+    };
   },
   computed: {
     ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
     ...mapGetters("todolist", ['getTodolistsData']),
-  },props: {
+  },
+  props: {
     allTodoList: {type: Object},
     method : {type : Function}
-  },mounted(){
+  },
+  mounted(){
     this.method();
   }
 };
@@ -52,7 +42,4 @@ div {
   background-color: #ac5c5c;
   margin: 0;
 }
-
-
-
 </style>

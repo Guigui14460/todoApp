@@ -1,18 +1,14 @@
 import axios from '@/api';
 
 export const createTodoList = ({ commit }, name) => {
-    console.log(name);
     let returnInformations = {"status": 0, "message": ""};
     return axios.post("todolist", {name}).then(response => {
         returnInformations["status"] = response.status;
-        console.log("response");
         commit("addTodoList", response.data);
-        console.log(response.data);
         returnInformations["data"] = response.data;
         return returnInformations;
     }).catch(e => {
         returnInformations["status"] = e.response.status;
-        // TODO: à faire en fonction des statuts possibles
         returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
         return returnInformations;
     });
@@ -32,19 +28,14 @@ export const getTodolists = ({ commit }) => {
 }
 
 export const deleteTodoList = ({ commit }, data) => {
-    console.log(data);
     const id = data.id;
-    const name = data.name;
     let returnInformations = {"status": 0, "message": ""};
-    return axios.delete("todo/" + id, {name}).then(response => {
+    return axios.delete("todolist/" + id).then(response => {
         returnInformations["status"] = response.status;
-        console.log("response");
-        commit("deleteTodo", {id});
-        console.log(response.data);
+        commit("deleteTodoList", id);
         return returnInformations;
     }).catch(e => {
         returnInformations["status"] = e.response.status;
-        // TODO: à faire en fonction des statuts possibles
         returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
         return returnInformations;
     });
@@ -69,7 +60,7 @@ export const createTodo = ({ commit }, data) => {
 export const getTodosFromTodoListId = ({ commit }, todolist_id) => {
     console.log(todolist_id);
     let returnInformations = {"status": 0, "message": ""};
-    return axios.get("todos", {todolist_id}).then(response => {
+    return axios.get("todos/", {todolist_id}).then(response => {
         returnInformations["status"] = response.status;
         console.log("response");
         commit("setTodos", todolist_id, response.data);
@@ -77,7 +68,6 @@ export const getTodosFromTodoListId = ({ commit }, todolist_id) => {
         return returnInformations;
     }).catch(e => {
         returnInformations["status"] = e.response.status;
-        // TODO: à faire en fonction des statuts possibles
         returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
         return returnInformations;
     });

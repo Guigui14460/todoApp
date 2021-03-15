@@ -1,14 +1,13 @@
 <template>
-    <div v-bind:class="{completed}">
+    <div v-bind:class="{completed}" style="display: flex; align-items: center;">
         <input type="checkbox" v-model="completed" />
-        
         <span v-if="!isChanging" @click="isChanging = true">{{ todo.name }}</span>
-        <div v-else>
+        <div v-else style="display: flex; align-items: center;">
             <input v-model="currentName" />
-            <fa icon="times-circle" type="fas" class="icon delete" @click="cancel()"></fa>
-            <fa icon="edit" type="fas" class="icon edit" @click="modify()"></fa>
+            <fa icon="times-circle" type="fas" class="icon icon-2x delete" @click="cancel"></fa>
+            <fa icon="edit" type="fas" class="icon icon-2x edit" @click="modify"></fa>
         </div>
-        <fa icon="trash-alt" type="fas" class="icon delete" @click="del()"></fa>
+        <fa icon="trash-alt" type="fas" class="icon icon-2x delete" @click="del"></fa>
     </div>
 </template>
 
@@ -17,11 +16,10 @@ import { mapActions } from 'vuex';
 
 export default {
     name: "Todo",
+    props: {
+        todo: { type: Object },
+    },
     methods: {
-
-        show:function() {
-            console.log(this.todo);
-        },
         modify() {
             this.modifyTodo({
                 id: this.todo.id,
@@ -61,40 +59,25 @@ export default {
             currentName: this.todo.name,
         };
     },
-    props: {
-        todo: {type: Object},
-    },mounted(){
-        // this.show()
-    },
 }
 </script>
 
 <style scoped>
+@import './icons.css';
+
 div {
     display: flex;
     align-items: flex-start;
 }
 
 div input[type="checkbox"] {
-    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    margin: 15px 10px 15px 0;
 }
 
 .completed span {
     text-decoration: line-through;
     color: #999999;
 }
-
-.icon {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-.edit {
-    color: rgb(106, 108, 248);
-}
-.delete {
-    color: red;
-}
-
 </style>

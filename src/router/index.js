@@ -36,11 +36,6 @@ const routes = [
         component: () => (import('../views/SignUp.vue')),
     },
     {
-        path: '/api',
-        name: 'api',
-        component: () => (import('../views/API.vue')),
-    },
-    {
         path: '/:pathMatch(.*)*',
         redirect: "/",
     },

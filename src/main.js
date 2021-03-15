@@ -5,9 +5,12 @@ import store from './store';
 
 import FontAwesomeIcon from './components/FontAwesomeIcon.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faEdit, faTimesCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faTrashAlt, faEdit, faTimesCircle, faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTrashAlt, faEdit, faTimesCircle, faPlus);
+library.add(faTrashAlt, faEdit, faTimesCircle, faPlus,
+            faEdit);
 
 
 createApp(App)

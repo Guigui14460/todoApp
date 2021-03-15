@@ -7,7 +7,11 @@ export function setTodoLists(state, data){
 }
 
 export function deleteTodoList(state, id){
-    state.todoLists = state.todoLists.filter(todoList => todoList.id !== id);
+    for(let i = 0; i < state.todoLists.length; i++){
+        if(state.todoLists[i].id === id){
+            state.todoLists.splice(i, 1);
+        }
+    }
 }
 
 export function setTodos(state, data){

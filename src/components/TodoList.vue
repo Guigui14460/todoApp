@@ -1,28 +1,26 @@
 <template>
   <div v-if="todolist != null" class="center">
     <h2>{{ todolist.name }}</h2>
+    <fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" />
     <div class="todos-container" v-if="todolist.todos.length == 0">
       Aucun todo pour cette liste
     </div>
     <div class="todos-container" v-else>
       <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" />
     </div>
-    <div v-show="isAdding">
+    <div v-show="isAdding" class="new-todo">
       <input type="text" v-model="newTodo" />
-      <fa icon="plus" type="fas" class="icon add" @click="add()"></fa>
-      <fa icon="times-circle" type="fas" class="icon delete" @click="cancel()"></fa>
+      <fa icon="plus" class="icon icon-2x add" @click="add"></fa>
+      <fa icon="times-circle" class="icon icon-2x delete" @click="cancel"></fa>
     </div>
-    <button class="blue" @click="isAdding = true">Ajouter un todo</button>
-    <input id="delete" type="button" value="delete" @click="deletet">
+    <button class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un todo</button>
   </div>
-
 </template>
 
 
 <script>
 import Todo from './Todo';
 import { mapActions } from 'vuex';
-
 
 export default {
   name: "TodoList",
@@ -36,6 +34,7 @@ export default {
     return {
       isAdding: false,
       newTodo: "",
+      currentName: "",
     };
   },
   methods: {
@@ -48,13 +47,11 @@ export default {
       }).then(this.cancel)
     },
     cancel(){
-        this.isAdding = false;
-        this.newTodo = "";
+      this.isAdding = false;
+      this.newTodo = "";
     },
-     deletet:function(){
-      console.log(this.todolist.id)
-   
-      this.deleteTodoList({id: this.todolist.id})
+    deletet(){
+      this.deleteTodoList({id: this.todolist.id});
     },
     ...mapActions("todolist", ["deleteTodoList"]),
   },
@@ -63,6 +60,9 @@ export default {
 
 <style scoped>
 @import './buttons.css';
+@import './forms.css';
+@import './icons.css';
+
 #check {
   padding: 10%;
 }
@@ -75,21 +75,10 @@ export default {
   text-align: center;
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-.add {
-    color: rgb(106, 108, 248);
-}
-.delete {
-    color: red;
-}
-#delete {
-  position: absolute;
-  bottom: 0;
+.new-todo {
+  display: flex;
+  padding: 15px 0 0 0;
+  justify-content: center;
+  align-items: center;
 }
 </style>
-

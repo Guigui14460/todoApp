@@ -10,7 +10,11 @@ export const getRemainingTodosByTodolistId = (state) => (id) => {
     }
     let list = state.todoLists.find(list => list.id === id);
     if(list){
-        return 100;
+        let res = 0;
+        for(let i = 0; i < list.length; i++){
+            res += list[i].list.todos.filter(todo => !todo.completed).length;
+        }
+        return res;
     }
     return 0
 }
