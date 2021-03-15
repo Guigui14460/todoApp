@@ -1,11 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
+import store from '../store/index';
 
 const routes = [
     {
         path: '/',
         name: 'home',
         component: Home,
+        beforeEnter: (to, from, next) => {
+            if(store.state.account.token){
+                next();
+            } else {
+                next("/login");
+            }
+        }
     },
     {
         path: '/about',
@@ -13,12 +21,12 @@ const routes = [
         component: () => (import('../views/About.vue')),
     },
     {
-        path: '/signin',
+        path: '/login',
         name: 'login',
         component: () => (import('../views/SignIn.vue')),
     },
     {
-        path: '/signup',
+        path: '/register',
         name: 'register',
         component: () => (import('../views/SignUp.vue')),
     },

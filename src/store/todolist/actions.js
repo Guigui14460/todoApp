@@ -8,6 +8,7 @@ export const createTodoList = ({ commit }, name) => {
         console.log("response");
         commit("addTodoList", response.data);
         console.log(response.data);
+        returnInformations["data"] = response.data;
         return returnInformations;
     }).catch(e => {
         returnInformations["status"] = e.response.status;
@@ -23,6 +24,25 @@ export const getTodolists = ({ commit }) => {
         returnInformations["status"] = response.status;
         console.log("response");
         commit('setTodoLists', response.data);
+        console.log(response.data);
+        return returnInformations;
+    }).catch(e => {
+        returnInformations["status"] = e.response.status;
+        // TODO: à faire en fonction des statuts possibles
+        returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
+        return returnInformations;
+    });
+}
+
+export const deleteTodoList = ({ commit }, data) => {
+    console.log(data);
+    const id = data.id;
+    const name = data.name;
+    let returnInformations = {"status": 0, "message": ""};
+    return axios.delete("todo/" + id, {name}).then(response => {
+        returnInformations["status"] = response.status;
+        console.log("response");
+        commit("deleteTodo", {id});
         console.log(response.data);
         return returnInformations;
     }).catch(e => {
@@ -93,7 +113,6 @@ export const toggleCompleteTodo = ({ commit }, data) => {
 }
 
 export const modifyTodo = ({ commit }, data) => {
-    console.log(data);
     const id = data.id;
     const completed = data.completed;
     const name = data.name;
@@ -101,8 +120,26 @@ export const modifyTodo = ({ commit }, data) => {
     let returnInformations = {"status": 0, "message": ""};
     return axios.patch("todo/" + id, {completed, name, todolist_id}).then(response => {
         returnInformations["status"] = response.status;
+        commit("modifyTodo", response.data);
+        return returnInformations;
+    }).catch(e => {
+        returnInformations["status"] = e.response.status;
+        returnInformations["message"] = "Un problème est survenu avec le serveur. Veuillez réessayer ultérieurement";
+        return returnInformations;
+    });
+}
+
+export const deleteTodo = ({ commit }, data) => {
+    console.log(data);
+    const id = data.id;
+    const completed = data.completed;
+    const name = data.name;
+    const todolist_id = data.todolist_id;
+    let returnInformations = {"status": 0, "message": ""};
+    return axios.delete("todo/" + id, {completed, name, todolist_id}).then(response => {
+        returnInformations["status"] = response.status;
         console.log("response");
-        commit("toggleCompleteTodo", response.data);
+        commit("deleteTodo", {completed, name, todolist_id, id});
         console.log(response.data);
         return returnInformations;
     }).catch(e => {

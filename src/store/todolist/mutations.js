@@ -6,6 +6,10 @@ export function setTodoLists(state, data){
     state.todoLists = data;
 }
 
+export function deleteTodoList(state, id){
+    state.todoLists = state.todoLists.filter(todoList => todoList.id !== id);
+}
+
 export function setTodos(state, data){
     let todoList = state.todotodoLists.find(todoList => todoList.id === data.todolist_id);
     todoList.todos = data.todos;
@@ -28,4 +32,9 @@ export function modifyTodo(state, data){
     todo.completed = data.completed;
     todo.name = data.name;
     todo.todolist_id = data.todolist_id;
+}
+
+export function deleteTodo(state, data){
+    const todoList = state.todoLists.find(todoList => todoList.id === data.todolist_id);
+    todoList.todos = todoList.todos.filter(todo => todo.id !== data.id);
 }
