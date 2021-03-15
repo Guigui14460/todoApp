@@ -13,6 +13,7 @@
       <fa icon="times-circle" type="fas" class="icon delete" @click="cancel()"></fa>
     </div>
     <button class="blue" @click="isAdding = true">Ajouter un todo</button>
+    <input id="delete" type="button" value="delete" @click="deletet">
   </div>
 
 </template>
@@ -50,6 +51,12 @@ export default {
         this.isAdding = false;
         this.newTodo = "";
     },
+     deletet:function(){
+      console.log(this.todolist.id)
+   
+      this.deleteTodoList({id: this.todolist.id})
+    },
+    ...mapActions("todolist", ["deleteTodoList"]),
   },
 };
 </script>
@@ -80,4 +87,9 @@ export default {
 .delete {
     color: red;
 }
+#delete {
+  position: absolute;
+  bottom: 0;
+}
 </style>
+
