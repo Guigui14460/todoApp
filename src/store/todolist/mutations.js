@@ -16,7 +16,7 @@ export function setTodos(state, data){
 }
 
 export function addTodo(state, data){
-    const todoList = state.todotodoLists.find(todoList => todoList.id === data.todolist_id);
+    const todoList = state.todoLists.find(todoList => todoList.id === data.todolist_id);
     todoList.todos.push(data);
 }
 

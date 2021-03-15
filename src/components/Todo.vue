@@ -8,7 +8,7 @@
             <fa icon="times-circle" type="fas" class="icon delete" @click="cancel()"></fa>
             <fa icon="edit" type="fas" class="icon edit" @click="modify()"></fa>
         </div>
-        <fa icon="trash-alt" type="fas" class="icon delete"></fa>
+        <fa icon="trash-alt" type="fas" class="icon delete" @click="del()"></fa>
     </div>
 </template>
 
@@ -34,8 +34,14 @@ export default {
             this.isChanging = false;
             this.currentName = this.todo.name;
         },
+        del() {
+            this.deleteTodo({
+                id: this.todo.id,
+                todolist_id: this.todo.todolist_id,
+            });
+        },
 
-        ...mapActions("todolist", ["toggleCompleteTodo", "modifyTodo"]),
+        ...mapActions("todolist", ["toggleCompleteTodo", "modifyTodo", "deleteTodo"]),
     },
     watch: {
         completed: function(val) {

@@ -19,7 +19,6 @@ export default {
 <style scoped>
 
 div {
- 
   display: flex;
   align-items: center;
 }

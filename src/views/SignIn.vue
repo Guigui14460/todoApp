@@ -52,4 +52,5 @@ export default {
 
 <style scoped>
 @import '../components/forms.css';
+@import '../components/buttons.css';
 </style>

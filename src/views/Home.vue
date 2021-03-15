@@ -58,7 +58,7 @@ export default {
 }
 
 h1 {
-  margin: 0;
-  text-align: left;
+  /* margin: 0; */
+  /* text-align: left; */
 }
 </style>
