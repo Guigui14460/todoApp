@@ -41,7 +41,7 @@ export default {
               console.log(result)
               console.log( this.$parent.$attrs)
               
-              this.$router.back()
+              // this.$router.back()
             })
               // for(let i =1 ; i < this.todo.length ; i++){
               //   console.log(this.todo[i])
