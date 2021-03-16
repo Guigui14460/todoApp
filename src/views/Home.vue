@@ -1,6 +1,6 @@
 <template>
   <div id="root">
-    <sidebar :allTodoList="getTodolistsData" :method="setList"/>
+    <sidebar :allTodoList="getTodolistsData" :method="setList" />
     <main>
       <h1>Todolist</h1>
       <todo-list :todolist="list" />
@@ -21,6 +21,7 @@ export default {
   },
   mounted(){
     this.getTodolists();
+    
   },
   data(){
     return{

@@ -16,11 +16,6 @@ const routes = [
         }
     },
     {
-        path: '/createTodoList',
-        name: 'create',
-        component: ()=> (import('../views/CreateTodo.vue')),
-    },
-    {
         path: '/about',
         name: 'about',
         component: () => (import('../views/About.vue')),

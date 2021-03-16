@@ -8,9 +8,6 @@
         <router-link @click.passive="closeMobileNav()" :to="{name: 'home'}">home</router-link>
       </li>
       <li class="nav-link">
-        <router-link @click.passive="closeMobileNav()" :to="{name: 'create'}">create</router-link>
-      </li>
-      <li class="nav-link">
         <router-link @click.passive="closeMobileNav()" :to="{name: 'about'}">A propos</router-link>
       </li>
       <li class="nav-link">
