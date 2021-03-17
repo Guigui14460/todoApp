@@ -1,6 +1,5 @@
 <template>
-  <!-- <div class="sidebar-item">{{ item.name }}</div> -->
-  <div><button>{{ item.name }}</button></div>
+  <div @click="setColor">{{ item.name }}</div>
 </template>
 
 <script>
@@ -8,6 +7,10 @@ export default {
   name: "SidebarItem",
   props:{
     item: { type: Object },
+  },methods:{
+    setColor:function(){
+      console.log("fsdfsdfsd");
+    }
   }
 };
 </script>
@@ -16,9 +19,22 @@ export default {
 div {
   display: flex;
   align-items: center;
+  background-color: #af2222;
+  padding: 5%;
+ 
+  border-top: 1px solid rgb(65, 58, 58);
 }
 
-button {
+div:last-of-type{
+  border-bottom: 1px solid rgb(65, 58, 58);
+}
+
+
+div:hover{
+  background-color: #241f1f;
+}
+
+/* button {
   text-align: center;
   margin: 0;
   padding: 10%;
@@ -33,7 +49,7 @@ button:hover{
   border: none;
   text-align: center;
   text-decoration: none;
-}
+} */
 
 /* .sidebar-item {
   text-align: left;
