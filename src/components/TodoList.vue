@@ -1,12 +1,13 @@
 <template>
-  <div v-if="todolist != null" class="center">
+  <div v-if="todolist != null" class="center"  >
+    <h2> done Todos {{doneTodos}} </h2>
     <h2>{{ todolist.name }}</h2>
     <fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" />
     <div class="todos-container" v-if="todolist.todos.length == 0">
       Aucun todo pour cette liste
     </div>
     <div class="todos-container" v-else>
-      <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" />
+      <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" @signalUpdateCount="updateCount" />
     </div>
     <div v-show="isAdding" class="new-todo">
       <input type="text" v-model="newTodo" />
@@ -35,6 +36,7 @@ export default {
       isAdding: false,
       newTodo: "",
       currentName: "",
+      doneTodos: 0,
     };
   },
   methods: {
@@ -53,6 +55,19 @@ export default {
     deletet(){
       this.deleteTodoList({id: this.todolist.id});
     },
+    updateCount(signal){
+      console.log("received")
+      if (signal === true){
+        this.doneTodos += 1
+      }
+      else{
+        this.doneTodos -=1
+      }
+
+      this.$emit("todosLeft",this.todolist.todos.length-this.doneTodos)
+      console.log(this.todolist.todos.length-this.doneTodos)
+    },
+
     ...mapActions("todolist", ["deleteTodoList"]),
   },
 };

@@ -1,7 +1,7 @@
 <template>
     <div v-bind:class="{completed}" style="display: flex; align-items: center;">
-        <input type="checkbox" v-model="completed" />
-        <span v-if="!isChanging" @click="isChanging = true">{{ todo.name }}</span>
+        <input type="checkbox" v-model="completed" @change="emitControler(completed)" />
+        <span v-if="!isChanging" @click="isChanging = true" >{{ todo.name }}</span>
         <div v-else style="display: flex; align-items: center;">
             <input v-model="currentName" />
             <fa icon="times-circle" type="fas" class="icon icon-2x delete" @click="cancel"></fa>
@@ -20,6 +20,11 @@ export default {
         todo: { type: Object },
     },
     methods: {
+
+        emitControler(state){
+            console.log(state),
+            this.$emit("signalUpdateCount",state)
+        },
         modify() {
             this.modifyTodo({
                 id: this.todo.id,

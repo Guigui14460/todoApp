@@ -1,5 +1,5 @@
-<template>
-  <div @click="setColor">{{ item.name }}</div>
+<template @todosLeft="logTest">
+  <div @click="setColor" >{{ item.name }} </div>
 </template>
 
 <script>
@@ -7,10 +7,18 @@ export default {
   name: "SidebarItem",
   props:{
     item: { type: Object },
+    
+    data(){
+      return{Todos: 0}
+    }
+  
   },methods:{
     setColor:function(){
       console.log("fsdfsdfsd");
-    }
+    },
+    logTest(variable){
+      console.log("Received",variable)
+    },    
   }
 };
 </script>
