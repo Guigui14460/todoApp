@@ -94,7 +94,7 @@ export default {
       position: absolute;
       height: 20px;
       width: 20px;
-      top: 120px;
+      top: 155px;
       left: 100%;
     }
 
