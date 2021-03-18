@@ -122,6 +122,7 @@ nav {
     position: absolute;
     flex-direction: column;
     width: 100%;
+    z-index: 100;
     top: 39px;
     left: 0;
     padding: 20px 0;
