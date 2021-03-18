@@ -1,2 +1,0 @@
-- Faire page d'accueil
-- Améliorer le CSS

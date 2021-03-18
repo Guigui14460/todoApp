@@ -1,5 +1,5 @@
 <template>
-  <div v-if="todolist != null" class="center"  >
+  <div v-if="todolist != null" class="center">
     <h2> done Todos {{doneTodos}} </h2>
     <h2>{{ todolist.name }}</h2>
     <fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" />
@@ -14,7 +14,7 @@
       <fa icon="plus" class="icon icon-2x add" @click="add"></fa>
       <fa icon="times-circle" class="icon icon-2x delete" @click="cancel"></fa>
     </div>
-    <button class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un todo</button>
+    <button v-if="!isAdding" class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un todo</button>
   </div>
 </template>
 
@@ -41,39 +41,35 @@ export default {
     };
   },
   methods: {
-    ...mapActions("todolist", ["createTodo"]),
-    add(){
+    ...mapActions("todolist", ["createTodo", "deleteTodoList"]),
+    add() {
       this.createTodo({
         name: this.newTodo,
         completed: false,
         todolist_id: this.todolist.id,
-      }).then(this.cancel)
+      }).then(this.cancel);
     },
-    cancel(){
+    cancel() {
       this.isAdding = false;
       this.newTodo = "";
     },
-    deletet(){
+    deletet() {
       this.deleteTodoList({id: this.todolist.id}).then(response => {
-        if(response.status >= 200){
+        if(response.status >= 200 && response.status < 400) {
           this.setList(null);
         }
-      })
+      });
     },
-    updateCount(signal){
-      console.log("received")
-      if (signal === true){
-        this.doneTodos += 1
+    updateCount(signal) {
+      if (signal === true) {
+        this.doneTodos += 1;
       }
       else{
-        this.doneTodos -=1
+        this.doneTodos -= 1;
       }
-
-      this.$emit("todosLeft",this.todolist.todos.length-this.doneTodos)
-      console.log(this.todolist.todos.length-this.doneTodos)
+      this.$emit("todosLeft",this.todolist.todos.length-this.doneTodos);
+      console.log(this.todolist.todos.length-this.doneTodos);
     },
-
-    ...mapActions("todolist", ["deleteTodoList"]),
   },
 };
 </script>

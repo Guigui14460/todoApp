@@ -40,3 +40,5 @@ $ npm run build
 
 ## License
 Project under the MIT license.
+
+The navigation bar has made with the help of [this article](https://medium.com/@hasanparasteh/ready-to-use-vue-js-navbar-bf79c43af6da).

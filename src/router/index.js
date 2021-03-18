@@ -24,11 +24,25 @@ const routes = [
         path: '/login',
         name: 'login',
         component: () => (import('../views/SignIn.vue')),
+        beforeEnter: (to, from, next) => {
+            if(store.state.account.token){
+                next({next: "home"});
+            } else {
+                next();
+            }
+        }
     },
     {
         path: '/register',
         name: 'register',
         component: () => (import('../views/SignUp.vue')),
+        beforeEnter: (to, from, next) => {
+            if(store.state.account.token){
+                next({next: "home"});
+            } else {
+                next();
+            }
+        }
     },
     {
         path: '/:pathMatch(.*)*',

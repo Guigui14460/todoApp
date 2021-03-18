@@ -1,22 +1,22 @@
 <template>
   <div id="bar">
-    <fa id="icon" icon="plus" @click="() => TogglePopup('buttonTrigger')"></fa>
+    <fa id="icon" icon="plus" @click="() => togglePopup('buttonTrigger')"></fa>
     <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist)" />
-    <CreateListPopup v-if="popupTriggers.buttonTrigger" :TogglePopup ="()=>TogglePopup('buttonTrigger')" :setList="setList" />
+    <CreateListPopup v-if="popupTriggers.buttonTrigger" :togglePopup ="()=>togglePopup('buttonTrigger')" :setList="setList" />
   </div>
 </template>
-
 
 <script>
 import SidebarItem from "./SidebarItem";
 import { mapActions, mapGetters } from 'vuex';
 import CreateListPopup from './CreateListPopup';
 import { ref } from 'vue';
+
 export default { 
   name: "Sidebar",
   components: {
     SidebarItem,
-    CreateListPopup
+    CreateListPopup,
   },
   methods: {
     ...mapActions("account", ["getAccountData"]),
@@ -27,29 +27,26 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
+    ...mapGetters("account", ['getUserData', 'isLoggedIn']),
     ...mapGetters("todolist", ['getTodolistsData']),
   },
   props: {
     setList : {type : Function}
   },
-  mounted() {
-    this.setList();
-  },
   setup() {
     const popupTriggers = ref({
       buttonTrigger : false,
       timedTrigger : false,
-    })
-
-    const TogglePopup = (trigger) => {
+    });
+    const togglePopup = (trigger) => {
       popupTriggers.value[trigger] =! popupTriggers.value[trigger]
-    }
+    };
+
     return {
       CreateListPopup,
       popupTriggers,
-      TogglePopup
-    }
+      togglePopup,
+    };
   }
 };
 </script>
@@ -72,6 +69,7 @@ background-color: #c53737;
   padding-left: 75px;
   padding-right: 80px;
   margin-bottom: -4px;
+  cursor: pointer;
   border-top: 1px solid rgb(65, 58, 58);
   /* border-bottom: 1px solid rgb(65, 58, 58); */
   

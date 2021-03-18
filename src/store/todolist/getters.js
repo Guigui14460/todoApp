@@ -1,6 +1,4 @@
-export const getTodolistsData = (state) => {
-    return state.todoLists;
-}
+export const getTodolistsData = (state) => state.todoLists;
 
 export const getTodolistById = (state) => (id) => state.todoLists.find(list => list.id === id);
 

@@ -4,8 +4,8 @@
       <img src="../assets/logo.png" alt="Logo" id="logo" />
     </router-link>
     <ul class="nav-links">
-      <li class="nav-link">
-        <router-link @click.passive="closeMobileNav()" :to="{name: 'home'}">Acceuil</router-link>
+      <li v-if="isLoggedIn" class="nav-link">
+        <router-link @click.passive="closeMobileNav()" :to="{name: 'home'}">Accueil</router-link>
       </li>
       <li class="nav-link">
         <router-link @click.passive="closeMobileNav()" :to="{name: 'about'}">A propos</router-link>

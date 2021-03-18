@@ -2,16 +2,16 @@
   <div class="popup">
     <div class="popup-inner">
       <slot />
-      <h1>Création de todolist :</h1>
-      <input v-model="name" placeholder="Ma todolist" />
+      <h1>Création de tout doux liste :</h1>
+      <input v-model="name" placeholder="Liste de course du ..." />
       <button @click="send" class="blue">Valider</button>
-      <button @click="TogglePopup()" class="red">Quitter</button>
+      <button @click="togglePopup()" class="red">Quitter</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "CreateListPopup",
@@ -21,27 +21,28 @@ export default {
     };
   },
   methods: {
-    ...mapActions("account", ["login", "logout", "getAccountData"]),
     ...mapActions("todolist", ["createTodoList"]),
     send() {
       if (this.name.length != 0) {
         this.createTodoList(this.name).then((result) => {
           this.setList(result.data);
         });
-        this.TogglePopup();
+        this.togglePopup();
       }
     },
   },
-  computed: {
-    ...mapGetters("account", ["getToken", "getUserData", "isLoggedIn"]),
-    ...mapGetters("todolist", ["getTodolistsData"]),
+  props: {
+    togglePopup: {type: Function},
+    setList: {type: Function},
   },
-  props: ["TogglePopup", "setList"],
 };
 </script>
 
 <style scoped>
-
+h1 {
+  font-size: 1.75em;
+  margin: 10px 0 1em 0;
+}
 
 .popup {
   position: fixed;
@@ -65,9 +66,7 @@ export default {
   grid-template-rows: 1fr;
 }
 
-input {
-  margin-right: 2%;
+button:first-of-type {
+  margin: 1em 0;
 }
-
-
 </style>
