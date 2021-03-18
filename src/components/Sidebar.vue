@@ -63,6 +63,7 @@ background-color: #c53737;
   padding-left: 75px;
   padding-right: 80px;
   margin-bottom: -4px;
+  cursor: pointer;
   border-top: 1px solid rgb(65, 58, 58);
   /* border-bottom: 1px solid rgb(65, 58, 58); */
   

@@ -1,9 +1,9 @@
 <template>
-  <div class="popup">
+  <div class="popup" @dblclick="togglePopup()">
     <div class="popup-inner">
       <slot />
-      <h1>Création de todolist :</h1>
-      <input v-model="name" placeholder="Ma todolist" />
+      <h1>Création de tout doux liste :</h1>
+      <input v-model="name" placeholder="Liste de course du ..." />
       <button @click="send" class="blue">Valider</button>
       <button @click="togglePopup()" class="red">Quitter</button>
     </div>
@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 1.75em;
+  margin: 10px 0 1em 0;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -61,7 +66,7 @@ export default {
   grid-template-rows: 1fr;
 }
 
-input {
-  margin-right: 2%;
+button:first-of-type {
+  margin: 1em 0;
 }
 </style>
