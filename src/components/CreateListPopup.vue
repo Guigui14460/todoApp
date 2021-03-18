@@ -2,10 +2,10 @@
   <div class="popup">
     <div class="popup-inner">
       <slot />
-      <h1>Création de todolist:</h1>
+      <h1>Création de todolist :</h1>
       <input v-model="name" placeholder="Ma todolist" />
-      <input type="button" value="valider" @click="send" />
-      <input type="button" value="quitter" @click="TogglePopup()" />
+      <button @click="send" class="blue">Valider</button>
+      <button @click="TogglePopup()" class="red">Quitter</button>
     </div>
   </div>
 </template>
@@ -15,33 +15,28 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "CreateListPopup",
-  components: {},
   data() {
     return {
       name: "",
     };
   },
   methods: {
-    send: function () {
+    ...mapActions("account", ["login", "logout", "getAccountData"]),
+    ...mapActions("todolist", ["createTodoList"]),
+    send() {
       if (this.name.length != 0) {
-        console.log(this.name);
         this.createTodoList(this.name).then((result) => {
-          console.log(result);
-          console.log(this.$parent.$attrs);
+          this.setList(result.data);
         });
-
         this.TogglePopup();
       }
     },
-
-    ...mapActions("account", ["login", "logout", "getAccountData"]),
-    ...mapActions("todolist", ["createTodoList"]),
   },
   computed: {
     ...mapGetters("account", ["getToken", "getUserData", "isLoggedIn"]),
     ...mapGetters("todolist", ["getTodolistsData"]),
   },
-  props: ["TogglePopup"],
+  props: ["TogglePopup", "setList"],
 };
 </script>
 
@@ -66,8 +61,8 @@ export default {
   background: rgb(170, 57, 57);
   padding: 1.5em;
   border-radius: 1em;
-   display: grid;
-    grid-template-rows: 1fr;
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
 input {

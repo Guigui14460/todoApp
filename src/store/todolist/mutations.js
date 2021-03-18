@@ -1,5 +1,8 @@
 export function addTodoList(state, data){
     state.todoLists.push(data);
+    if(data.todos === undefined){
+        data.todos = [];
+    }
 }
 
 export function setTodoLists(state, data){

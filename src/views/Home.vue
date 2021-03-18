@@ -1,9 +1,9 @@
 <template>
   <div id="root">
-    <sidebar :allTodoList="getTodolistsData" :method="setList" />
+    <sidebar :setList="setList" />
     <main>
       <h1>Todolist</h1>
-      <todo-list :todolist="list" />
+      <todo-list :todolist="list" :setList="setList" />
     </main>
   </div>
 </template>
@@ -19,25 +19,20 @@ export default {
     TodoList,
     Sidebar,
   },
-  mounted(){
+  mounted() {
     this.getTodolists();
-    
   },
-  data(){
+  data() {
     return{
-      list:null,
-      
+      list: null,
     }
   },
   methods: {
-    
-    affiche: function (){
+    affiche() {
       console.log(this.list)
     },
-
-    setList:function (todolist){
+    setList(todolist) {
       this.list = todolist;
-     
     },
 
     ...mapActions("account", ["login", "logout", "getAccountData"]),
@@ -56,10 +51,5 @@ export default {
   display: grid;
   grid-template-columns: 25% 75%;
   min-height: calc(100vh - 55px);
-}
-
-h1 {
-  /* margin: 0; */
-  /* text-align: left; */
 }
 </style>

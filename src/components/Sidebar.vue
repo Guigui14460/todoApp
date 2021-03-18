@@ -1,9 +1,8 @@
 <template>
   <div id="bar">
-    <sidebar-item v-for="todolist in allTodoList" :key="todolist.id" :item="todolist" @click="method(todolist)"/>
+    <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist.id)"/>
     <fa id="icon" icon="plus" @click="() => TogglePopup('buttonTrigger')"></fa>
-    <CreateListPopup v-if="popupTriggers.buttonTrigger" :TogglePopup ="()=>TogglePopup('buttonTrigger')" /> 
-      
+    <CreateListPopup v-if="popupTriggers.buttonTrigger" :TogglePopup ="()=>TogglePopup('buttonTrigger')" :setList="setList"/>
 
 
     <!-- <router-link  :to="{name: 'create'}" icon="plus"><fa icon="plus"></fa></router-link>   -->
@@ -23,10 +22,9 @@ export default {
     CreateListPopup
   },
   methods: {
-    ...mapActions("account", ["login", "logout", "getAccountData"]),
-    ...mapActions("todolist", ["getTodolists"]),
+    ...mapActions("account", ["getAccountData"]),
   },
-  data(){
+  data() {
     return {
       list: null,
     };
@@ -36,12 +34,12 @@ export default {
     ...mapGetters("todolist", ['getTodolistsData']),
   },
   props: {
-    allTodoList: {type: Object},
-    method : {type : Function}
+    setList : {type : Function}
   },
-  mounted(){
-    this.method();
-  },setup(){
+  mounted() {
+    this.setList();
+  },
+  setup() {
     const popupTriggers = ref({
       buttonTrigger : false,
       timedTrigger : false,

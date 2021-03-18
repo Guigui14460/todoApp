@@ -30,6 +30,7 @@ export default {
   },
   props: {
     todolist: {type: Object},
+    setList: {type: Function},
   },
   data(){
     return {
@@ -53,7 +54,11 @@ export default {
       this.newTodo = "";
     },
     deletet(){
-      this.deleteTodoList({id: this.todolist.id});
+      this.deleteTodoList({id: this.todolist.id}).then(response => {
+        if(response.status >= 200){
+          this.setList(null);
+        }
+      })
     },
     updateCount(signal){
       console.log("received")
