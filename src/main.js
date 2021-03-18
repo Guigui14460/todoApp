@@ -7,11 +7,12 @@ import FontAwesomeIcon from './components/FontAwesomeIcon.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faTrashAlt, faEdit, faTimesCircle, faPlus,
-    faArrowRight, faArrowLeft
+    faArrowRight, faArrowLeft, faCheck, faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faTrashAlt, faEdit, faTimesCircle, faPlus,
-            faEdit, faArrowRight, faArrowLeft);
+            faEdit, faArrowRight, faArrowLeft, faCheck,
+            faTimes);
 
 
 createApp(App)

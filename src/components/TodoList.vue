@@ -1,15 +1,20 @@
 <template>
   <div v-if="todolist != null" class="center">
     <h2> done Todos {{doneTodos}} </h2>
-    <h2>{{ todolist.name }}</h2>
-    <fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" />
+    <h2>{{ todolist.name }}<fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" /></h2>
     <div class="todos-container" v-if="todolist.todos.length == 0">
       Aucun todo pour cette liste
     </div>
     <div class="todos-container" v-else>
-      <todo v-for="todo in todolist.todos" :key="todo.id" :todo="todo" @signalUpdateCount="updateCount" />
+      <div id="filtration">
+        <span style="margin-right: 20px;">Filtration :</span>
+        <button @click="changeFilter('all')">Tout</button>
+        <fa icon="check" class="icon icon-2x" @click="changeFilter('completed')">Complétés</fa>
+        <fa icon="times" class="icon icon-2x" @click="changeFilter('notCompleted')">Non complétés</fa>
+      </div>
+      <todo v-for="todo in todos" :key="todo.id" :todo="todo" @signalUpdateCount="updateCount" />
     </div>
-    <div v-show="isAdding" class="new-todo">
+    <div v-show="isAdding" id="new-todo">
       <input type="text" v-model="newTodo" />
       <fa icon="plus" class="icon icon-2x add" @click="add"></fa>
       <fa icon="times-circle" class="icon icon-2x delete" @click="cancel"></fa>
@@ -17,7 +22,6 @@
     <button v-if="!isAdding" class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un todo</button>
   </div>
 </template>
-
 
 <script>
 import Todo from './Todo';
@@ -38,6 +42,7 @@ export default {
       newTodo: "",
       currentName: "",
       doneTodos: 0,
+      filter: 'all',
     };
   },
   methods: {
@@ -70,6 +75,20 @@ export default {
       this.$emit("todosLeft",this.todolist.todos.length-this.doneTodos);
       console.log(this.todolist.todos.length-this.doneTodos);
     },
+    changeFilter(type) {
+      this.filter = type;
+    },
+  },
+  computed: {
+    todos() {
+      if(this.filter == "all"){
+        return this.todolist.todos;
+      }
+      if(this.filter == "completed"){
+        return this.todolist.todos.filter(todo => todo.completed);
+      }
+      return this.todolist.todos.filter(todo => !todo.completed);
+    }
   },
 };
 </script>
@@ -78,23 +97,33 @@ export default {
 @import './buttons.css';
 @import './forms.css';
 @import './icons.css';
-
-#check {
-  padding: 10%;
+h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.todos-container {
-  margin: 10px 0;
+#filtration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#filtration .icon {
+  margin: 0 10px;
 }
 
-.center {
-  text-align: center;
-}
-
-.new-todo {
+#new-todo {
   display: flex;
   padding: 15px 0 0 0;
   justify-content: center;
   align-items: center;
+}
+
+.todos-container {
+  margin: 20px 0 10px 0;
+}
+
+.center {
+  text-align: center;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <router-link :to="{name: 'home'}" @click.passive="closeMobileNav()">
-      <img src="../assets/logo.png" alt="Logo" id="logo" />
+    <router-link :to="{name: 'home'}" @click.passive="closeMobileNav()" style="text-decoration: none; font-size: 20px;">
+      <span id="logo">Tout doux App</span>
     </router-link>
     <ul class="nav-links">
       <li v-if="isLoggedIn" class="nav-link">
@@ -59,13 +59,6 @@ nav {
   padding: 0 20px;
 }
 
-#logo {
-  width: 45px;
-  height: 45px;
-  margin-left: 55px;
-  margin-top: 10px;
-}
-
 .nav-links {
   display: flex;
   list-style: none;
@@ -118,11 +111,22 @@ nav {
 
 /* Mobile */
 @media screen and (max-width: 768px) {
+  nav {
+    width: 100%;
+    padding: 0;
+    position: fixed;
+    z-index: 10;
+  }
+
+  #logo {
+    margin-left: 10px;
+  }
+
   .nav-links {
     position: absolute;
     flex-direction: column;
     width: 100%;
-    z-index: 100;
+    z-index: 3;
     top: 39px;
     left: 0;
     padding: 20px 0;
@@ -141,6 +145,7 @@ nav {
 
   #burger {
     display: block;
+    margin-right: 10px;
   }
 }
 </style>

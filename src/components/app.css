@@ -50,5 +50,6 @@ main {
 
   main {
     padding: 10px 20px;
+    padding-top: 55px !important;
   }
 }

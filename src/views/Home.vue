@@ -2,8 +2,11 @@
   <div id="root">
     <sidebar :setList="setList" />
     <main>
-      <h1>Tout doux listes</h1>
-      <todo-list :todolist="list" :setList="setList" />
+      <div v-if="list == null">
+        <h1>Tout doux listes</h1>
+        <p>Veuillez sélectionner une tout doux liste pour l'afficher ici</p>
+      </div>
+      <todo-list :todolist="list" :setList="setList" v-else />
     </main>
   </div>
 </template>
@@ -41,6 +44,10 @@ export default {
   display: grid;
   grid-template-columns: 200px auto;
   min-height: calc(100vh - 55px);
+}
+
+p {
+  text-align: center;
 }
 
 @media screen and (max-width: 768px){
