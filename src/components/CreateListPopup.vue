@@ -5,13 +5,13 @@
       <h1>Création de todolist :</h1>
       <input v-model="name" placeholder="Ma todolist" />
       <button @click="send" class="blue">Valider</button>
-      <button @click="TogglePopup()" class="red">Quitter</button>
+      <button @click="togglePopup()" class="red">Quitter</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "CreateListPopup",
@@ -21,28 +21,24 @@ export default {
     };
   },
   methods: {
-    ...mapActions("account", ["login", "logout", "getAccountData"]),
     ...mapActions("todolist", ["createTodoList"]),
     send() {
       if (this.name.length != 0) {
         this.createTodoList(this.name).then((result) => {
           this.setList(result.data);
         });
-        this.TogglePopup();
+        this.togglePopup();
       }
     },
   },
-  computed: {
-    ...mapGetters("account", ["getToken", "getUserData", "isLoggedIn"]),
-    ...mapGetters("todolist", ["getTodolistsData"]),
+  props: {
+    togglePopup: {type: Function},
+    setList: {type: Function},
   },
-  props: ["TogglePopup", "setList"],
 };
 </script>
 
 <style scoped>
-
-
 .popup {
   position: fixed;
   top: 0;
@@ -68,6 +64,4 @@ export default {
 input {
   margin-right: 2%;
 }
-
-
 </style>

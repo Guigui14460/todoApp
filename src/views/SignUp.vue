@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: "SignIn",
@@ -52,14 +52,6 @@ export default {
         this.message = "Les deux mots de passe sont différents";
       }
     },
-  },
-  computed: {
-    ...mapGetters("account", ["isLoggedIn"]),
-  },
-  mounted() {
-    if(this.isLoggedIn) {
-      this.$router.replace("/");
-    }
   },
 }
 </script>

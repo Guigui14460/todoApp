@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Sidebar from "@/components/Sidebar"
-import TodoList from "@/components/TodoList"
-import { mapActions, mapGetters } from 'vuex';
+import Sidebar from "@/components/Sidebar";
+import TodoList from "@/components/TodoList";
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Home',
@@ -23,26 +23,16 @@ export default {
     this.getTodolists();
   },
   data() {
-    return{
+    return {
       list: null,
-    }
+    };
   },
   methods: {
-    affiche() {
-      console.log(this.list)
-    },
+    ...mapActions("todolist", ["getTodolists"]),
     setList(todolist) {
       this.list = todolist;
     },
-
-    ...mapActions("account", ["login", "logout", "getAccountData"]),
-    ...mapActions("todolist", ["getTodolists"]),
   },
-  computed: {
-    ...mapGetters("account", ['getToken', 'getUserData', 'isLoggedIn']),
-    ...mapGetters("todolist", ['getTodolistsData']),
-  }
-
 };
 </script>
 
