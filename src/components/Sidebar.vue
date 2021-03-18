@@ -1,11 +1,8 @@
 <template>
   <div id="bar">
-    <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist.id)"/>
     <fa id="icon" icon="plus" @click="() => TogglePopup('buttonTrigger')"></fa>
-    <CreateListPopup v-if="popupTriggers.buttonTrigger" :TogglePopup ="()=>TogglePopup('buttonTrigger')" :setList="setList"/>
-
-
-    <!-- <router-link  :to="{name: 'create'}" icon="plus"><fa icon="plus"></fa></router-link>   -->
+    <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist)" />
+    <CreateListPopup v-if="popupTriggers.buttonTrigger" :TogglePopup ="()=>TogglePopup('buttonTrigger')" :setList="setList" />
   </div>
 </template>
 
@@ -64,13 +61,19 @@ background-color: #c53737;
 }
 
 #icon{
-  width: 10%;
-  height: 10%;
-  margin-left: 10%;
-
+  width: 45px;
+  height: 45px;
+  padding-left: 75px;
+  padding-right: 80px;
+  margin-bottom: -4px;
+  margin-top: 20px;
+  border-top: 1px solid rgb(65, 58, 58);
+  /* border-bottom: 1px solid rgb(65, 58, 58); */
+  
 }
 
 #icon:hover{
-  opacity: 0.8;
+  /* opacity: 0.8; */
+  background-color: #241f1f;
 }
 </style>

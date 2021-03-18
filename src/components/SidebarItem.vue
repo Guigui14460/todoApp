@@ -28,7 +28,7 @@ div {
   display: flex;
   align-items: center;
   background-color: #af2222;
-  padding: 5%;
+  padding: 10px;
  
   border-top: 1px solid rgb(65, 58, 58);
 }

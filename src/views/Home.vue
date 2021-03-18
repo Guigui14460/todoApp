@@ -49,7 +49,7 @@ export default {
 <style scoped>
 #root {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 200px auto;
   min-height: calc(100vh - 55px);
 }
 </style>
