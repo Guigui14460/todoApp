@@ -2,7 +2,7 @@
   <div id="root">
     <sidebar :setList="setList" />
     <main>
-      <h1>Todolist</h1>
+      <h1>Tout doux listes</h1>
       <todo-list :todolist="list" :setList="setList" />
     </main>
   </div>

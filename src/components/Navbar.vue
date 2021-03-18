@@ -60,9 +60,10 @@ nav {
 }
 
 #logo {
-  width: 30px;
-  height: 30px;
-  margin-right: auto;
+  width: 45px;
+  height: 45px;
+  margin-left: 55px;
+  margin-top: 10px;
 }
 
 .nav-links {

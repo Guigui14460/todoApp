@@ -66,7 +66,6 @@ background-color: #c53737;
   padding-left: 75px;
   padding-right: 80px;
   margin-bottom: -4px;
-  margin-top: 20px;
   border-top: 1px solid rgb(65, 58, 58);
   /* border-bottom: 1px solid rgb(65, 58, 58); */
   
