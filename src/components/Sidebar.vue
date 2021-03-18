@@ -60,6 +60,12 @@ background-color: #c53737;
   margin: 0;
 }
 
+@media screen and (max-width: 768px){
+    #bar {
+      display: none;
+    }
+}
+
 #icon{
   width: 45px;
   height: 45px;

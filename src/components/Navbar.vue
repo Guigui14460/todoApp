@@ -5,7 +5,7 @@
     </router-link>
     <ul class="nav-links">
       <li class="nav-link">
-        <router-link @click.passive="closeMobileNav()" :to="{name: 'home'}">home</router-link>
+        <router-link @click.passive="closeMobileNav()" :to="{name: 'home'}">Acceuil</router-link>
       </li>
       <li class="nav-link">
         <router-link @click.passive="closeMobileNav()" :to="{name: 'about'}">A propos</router-link>
