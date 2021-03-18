@@ -1,5 +1,5 @@
 <template>
-  <div class="popup" @dblclick="togglePopup()">
+  <div class="popup">
     <div class="popup-inner">
       <slot />
       <h1>Création de tout doux liste :</h1>
