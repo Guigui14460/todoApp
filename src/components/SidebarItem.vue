@@ -1,5 +1,5 @@
 <template>
-  <div @click="setColor" >{{ item.name }} <done v-if="true"></done> </div>
+  <div @click="setColor" >{{ item.name }} <done :item="item"/> </div>
   
 </template>
 
@@ -13,7 +13,6 @@ export default {
 
   props:{
     item: { type: Object },
-    
     data(){
       return{Todos: 0}
     }

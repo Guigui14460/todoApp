@@ -1,21 +1,30 @@
 <template>
-  <p>| is Done !</p>
+  <p v-if="remains == 0"> | is Done !  </p>
 </template>
 
 <script>
 
+import { mapGetters } from 'vuex';
 export default {
   name: "Done",
   props:{
-    item: { type: Object },
+    item: {type: Object},
+  },
+  data(){return{}},
+  methods:{},
+  computed:{
 
-  
-  },methods:{
-    setColor:function(){
-      console.log("fsdfsdfsd");
+    ...mapGetters("todolist",["getRemainingTodosByTodolistId"]),
+
+    remains(){
+      return this.getRemainingTodosByTodolistId(this.item.id)
     },
-   
+
+
   }
+
+
+
 };
 
 
