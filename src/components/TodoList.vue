@@ -1,7 +1,8 @@
 <template>
   <div v-if="todolist != null" class="center">
-    <h2> done Todos {{doneTodos}} </h2>
     <h2>{{ todolist.name }}<fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" /></h2>
+    
+    <div>{{getRemainingTodosByTodolistId(todolist.id)}}_{{ remains }}</div>
     <div class="todos-container" v-if="todolist.todos.length == 0">
       Aucun todo pour cette liste
     </div>
@@ -12,7 +13,7 @@
         <fa icon="check" class="icon icon-2x" @click="changeFilter('completed')">Complétés</fa>
         <fa icon="times" class="icon icon-2x" @click="changeFilter('notCompleted')">Non complétés</fa>
       </div>
-      <todo v-for="todo in todos" :key="todo.id" :todo="todo" @signalUpdateCount="updateCount" />
+      <todo v-for="todo in todos" :key="todo.id" :todo="todo" />
     </div>
     <div v-show="isAdding" id="new-todo">
       <input type="text" v-model="newTodo" />
@@ -25,7 +26,7 @@
 
 <script>
 import Todo from './Todo';
-import { mapActions } from 'vuex';
+import { mapActions,mapGetters } from 'vuex';
 
 export default {
   name: "TodoList",
@@ -41,12 +42,13 @@ export default {
       isAdding: false,
       newTodo: "",
       currentName: "",
-      doneTodos: 0,
       filter: 'all',
     };
   },
   methods: {
     ...mapActions("todolist", ["createTodo", "deleteTodoList"]),
+    
+    
     add() {
       this.createTodo({
         name: this.newTodo,
@@ -65,21 +67,18 @@ export default {
         }
       });
     },
-    updateCount(signal) {
-      if (signal === true) {
-        this.doneTodos += 1;
-      }
-      else{
-        this.doneTodos -= 1;
-      }
-      this.$emit("todosLeft",this.todolist.todos.length-this.doneTodos);
-      console.log(this.todolist.todos.length-this.doneTodos);
-    },
     changeFilter(type) {
       this.filter = type;
     },
   },
+  
   computed: {
+
+   ...mapGetters("todolist",["getRemainingTodosByTodolistId"]),
+
+    remains(){
+      return this.getRemainingTodosByTodolistId(this.todolist.id)
+    },
     todos() {
       if(this.filter == "all"){
         return this.todolist.todos;

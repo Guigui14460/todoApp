@@ -1,10 +1,16 @@
-<template @todosLeft="logTest">
-  <div @click="setColor" >{{ item.name }} </div>
+<template>
+  <div @click="setColor" >{{ item.name }} <done v-if="true"></done> </div>
+  
 </template>
 
 <script>
+import Done from './Done.vue';
 export default {
   name: "SidebarItem",
+  components:{
+    Done,
+  },
+
   props:{
     item: { type: Object },
     
@@ -16,9 +22,7 @@ export default {
     setColor:function(){
       console.log("fsdfsdfsd");
     },
-    logTest(variable){
-      console.log("Received",variable)
-    },    
+   
   }
 };
 </script>
@@ -41,4 +45,6 @@ div:last-of-type{
 div:hover{
   background-color: #241f1f;
 }
+
+
 </style>
