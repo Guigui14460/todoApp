@@ -2,7 +2,6 @@
   <div v-if="todolist != null" class="center">
     <h2>{{ todolist.name }}<fa icon="trash-alt" class="icon icon-3x delete" @click="deletet" /></h2>
     
-    <div>{{getRemainingTodosByTodolistId(todolist.id)}}_{{ remains }}</div>
     <div class="todos-container" v-if="todolist.todos.length == 0">
       Aucun todo pour cette liste
     </div>

@@ -45,5 +45,9 @@ div:hover{
   background-color: #241f1f;
 }
 
+done{
+  float: right;
+
+}
 
 </style>
