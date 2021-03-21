@@ -1,7 +1,10 @@
 <template>
   <aside>
     <div id="bar">
-      <fa id="icon" icon="plus" @click="() => togglePopup('buttonTrigger')"></fa>
+      <div id="center">
+        <fa id="icon" icon="plus" @click="() => togglePopup('buttonTrigger')"></fa>
+        <span>Todos restants : {{ remainingTodos }}</span>
+      </div>
       <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist)" />
       <CreateListPopup v-if="popupTriggers.buttonTrigger" :togglePopup ="()=>togglePopup('buttonTrigger')" :setList="setList" />
     </div>
@@ -36,10 +39,10 @@ export default {
   },
   computed: {
     ...mapGetters("account", ['getUserData', 'isLoggedIn']),
-    ...mapGetters("todolist", ['getTodolistsData']),
+    ...mapGetters("todolist", ['getTodolistsData', "remainingTodos"]),
   },
   props: {
-    setList : {type : Function}
+    setList: { type : Function },
   },
   setup() {
     const popupTriggers = ref({
@@ -119,5 +122,13 @@ export default {
 }
 #icon:hover {
   background-color: #241f1f;
+}
+
+#center {
+  text-align: center;
+}
+#center span {
+  display: block;
+  margin: 5px 0;
 }
 </style>

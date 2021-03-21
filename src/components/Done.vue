@@ -1,40 +1,35 @@
 <template>
-  <p v-if="remains == 0"> is Done !  </p>
-  <p v-if="remains > 0">{{remains}} left  </p>
-
+  <span v-if="remains == 0">
+    <fa icon="check" class="icon"></fa>
+  </span>
+  <span v-if="remains > 0">{{ remains }}</span>
 </template>
 
 <script>
-
 import { mapGetters } from 'vuex';
+
 export default {
   name: "Done",
-  props:{
-    item: {type: Object},
+  props: {
+    item: { type: Object },
   },
-  data(){return{}},
-  methods:{},
-  computed:{
-
-    ...mapGetters("todolist",["getRemainingTodosByTodolistId"]),
-
+  computed: {
+    ...mapGetters("todolist", ["getRemainingTodosByTodolistId"]),
     remains(){
       return this.getRemainingTodosByTodolistId(this.item.id)
     },
-
-
-  }
-
-
-
+  },
 };
 </script>
+
 <style scoped>
-p{
-  background-color: rgb(109, 105, 105);
+span {
+  display: inline-block;
   margin-left: 5px;
-  border-radius: 5px;
+}
 
-
+.icon {
+  width: 15px;
+  height: 15px;
 }
 </style>

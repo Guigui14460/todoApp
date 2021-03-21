@@ -1,28 +1,21 @@
 <template>
-  <div @click="setColor" >{{ item.name }} <done :item="item"/> </div>
-  
+  <div>
+    {{ item.name }}
+    <done :item="item" />
+  </div>
 </template>
 
 <script>
 import Done from './Done.vue';
+
 export default {
   name: "SidebarItem",
-  components:{
+  components: {
     Done,
   },
-
-  props:{
+  props: {
     item: { type: Object },
-    data(){
-      return{Todos: 0}
-    }
-  
-  },methods:{
-    setColor:function(){
-      console.log("fsdfsdfsd");
-    },
-   
-  }
+  },
 };
 </script>
 
@@ -34,20 +27,12 @@ div {
   padding: 10px;
   cursor: pointer;
   border-top: 1px solid rgb(65, 58, 58);
+  justify-content: space-between;
 }
-
 div:last-of-type{
   border-bottom: 1px solid rgb(65, 58, 58);
 }
-
-
 div:hover{
-  background-color: #241f1f;
+  background-color: #ce1f1f;
 }
-
-done{
-  float: right;
-
-}
-
 </style>
