@@ -24,7 +24,7 @@ export default {
     ...mapActions("todolist", ["createTodoList"]),
     send() {
       if (this.name.length != 0) {
-        this.createTodoList(this.name).then((result) => {
+        this.createTodoList({name: this.name}).then((result) => {
           this.setList(result.data);
         });
         this.togglePopup();

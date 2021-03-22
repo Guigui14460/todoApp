@@ -1,6 +1,7 @@
 import axios from '@/api';
 
-export const createTodoList = ({ commit }, name) => {
+export const createTodoList = ({ commit }, data) => {
+    const name = data.name;
     let returnInformations = {"status": 0, "message": ""};
     return axios.post("todolist", {name}).then(response => {
         returnInformations["status"] = response.status;
@@ -58,13 +59,10 @@ export const createTodo = ({ commit }, data) => {
 }
 
 export const getTodosFromTodoListId = ({ commit }, todolist_id) => {
-    console.log(todolist_id);
     let returnInformations = {"status": 0, "message": ""};
-    return axios.get("todos/", {todolist_id}).then(response => {
+    return axios.get("todos/" + todolist_id).then(response => {
         returnInformations["status"] = response.status;
-        console.log("response");
         commit("setTodos", todolist_id, response.data);
-        console.log(response.data);
         return returnInformations;
     }).catch(e => {
         returnInformations["status"] = e.response.status;
@@ -92,11 +90,9 @@ export const toggleCompleteTodo = ({ commit }, data) => {
 
 export const modifyTodo = ({ commit }, data) => {
     const id = data.id;
-    const completed = data.completed;
     const name = data.name;
-    const todolist_id = data.todolist_id;
     let returnInformations = {"status": 0, "message": ""};
-    return axios.patch("todo/" + id, {completed, name, todolist_id}).then(response => {
+    return axios.patch("todo/" + id, {name}).then(response => {
         returnInformations["status"] = response.status;
         commit("modifyTodo", response.data);
         return returnInformations;
