@@ -3,7 +3,7 @@
     <div id="bar">
       <div id="center">
         <fa id="icon" icon="plus" @click="() => togglePopup('buttonTrigger')"></fa>
-        <span>Todos restants : {{ remainingTodos }}</span>
+        <span>Tout doux restants : {{ remainingTodos }}</span>
       </div>
       <sidebar-item v-for="todolist in getTodolistsData" :key="todolist.id" :item="todolist" @click="setList(todolist)" />
       <CreateListPopup v-if="popupTriggers.buttonTrigger" :togglePopup ="()=>togglePopup('buttonTrigger')" :setList="setList" />

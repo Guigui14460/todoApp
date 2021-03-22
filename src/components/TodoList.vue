@@ -18,7 +18,7 @@
       <fa icon="plus" class="icon icon-2x add" @click="add"></fa>
       <fa icon="times-circle" class="icon icon-2x delete" @click="cancel"></fa>
     </div>
-    <button v-if="!isAdding" class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un todo</button>
+    <button v-if="!isAdding" class="blue" style="margin-top: 15px;" @click="isAdding = true">Ajouter un tout doux</button>
   </div>
 </template>
 
